@@ -3,19 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MauiRPNCalculator.MainPage">
 
+	<ContentPage.ToolbarItems>
+		<ToolbarItem Order="Secondary"
+					 Text="Choose theme"/>
+		<ToolbarItem Order="Secondary"
+					 Text="About"/>
+	</ContentPage.ToolbarItems>
 	<ContentPage.Resources>
+		
 		<Style x:Key="BaseCalculatorButtonStyle"
 				TargetType="Button">
 			<Setter Property="WidthRequest"
-					Value="80"/>
+					Value="100"/>
 			<Setter Property="HeightRequest"
 					Value="80"/>
 			<Setter Property="CornerRadius"
-					Value="40"/>
+					Value="20"/>
 			<Setter Property="TextColor"
 					Value="{AppThemeBinding Light = Black, Dark=White}"/>
 			<Setter Property="FontSize"
-					Value="32"/>
+					Value="23"/>
 			<Setter Property="FontAttributes"
 					Value="Bold"/>
 		</Style>
@@ -29,6 +36,10 @@
 			<Setter Property="TextColor"
 					Value="{AppThemeBinding Light=DarkSlateGrey,
 											Dark={StaticResource CustomLightBlue}}"/>
+			<Setter Property="Command"
+					Value="{Binding HandleNumberButtonPressCommand}"/>
+			<Setter Property="CommandParameter"
+					Value="{Binding Source={RelativeSource Self}, Path=Text}"/>
 		</Style>
 		<Style x:Key="OperatorButtonStyle"
 			   TargetType="Button"
@@ -36,6 +47,10 @@
 			<Setter Property="BackgroundColor"
 					Value="{AppThemeBinding Light={StaticResource CustomBlue},
 											Dark={StaticResource CustomDarkBlue}}"/>
+			<Setter Property="Command"
+					Value="{Binding HandleOperatorButtonPressCommand}"/>
+			<Setter Property="CommandParameter"
+					Value="{Binding Source={RelativeSource Self}, Path=Text}"/>
 		</Style>
 
 	</ContentPage.Resources>
@@ -46,13 +61,25 @@
 				Background="{AppThemeBinding Light={StaticResource CustomLightBlue},
 											 Dark={StaticResource CustomDrkGrey}}">
 			<VerticalStackLayout>
-				<Entry Text="9x3"
+				<Label Text="{Binding Row4}"
 					HorizontalTextAlignment="End"
-					FontSize="75"
+					FontSize="20"
 					/>
-				<Label Text="27"
+				<Label Text="{Binding Row3}"
+				HorizontalTextAlignment="End"
+				FontSize="20"
+				/>
+				<Label Text="{Binding Row2}"
+				HorizontalTextAlignment="End"
+				FontSize="20"
+				/>
+				<Label Text="{Binding Row1}"
+				HorizontalTextAlignment="End"
+				FontSize="20"
+				/>
+				<Entry Text="{Binding Result}"
 					HorizontalTextAlignment="End"
-					FontSize="50"
+					FontSize="20"
 					/>
 			</VerticalStackLayout>
 		</Border>
@@ -65,11 +92,11 @@
 			<Button Grid.Row="0"
 					Grid.Column="0"
 					Style="{StaticResource OperatorButtonStyle}"
-					Text="AC"/>
+					Text="Clear"/>
 			<Button Grid.Row="0"
 					Grid.Column="1"
 					Style="{StaticResource OperatorButtonStyle}"
-					Text="(  )"/>
+					Text="√"/>
 			<Button Grid.Row="0"
 					Grid.Column="2"
 					Style="{StaticResource OperatorButtonStyle}"
@@ -96,7 +123,7 @@
 			<Button Grid.Row="1"
 					Grid.Column="3"
 					Style="{StaticResource OperatorButtonStyle}"
-					Text="X"/>
+					Text="x"/>
 
 			<!--  Row 2  -->
 
@@ -148,12 +175,12 @@
 					Text="."/>
 			<Button Grid.Row="4"
 					Grid.Column="2"
-					Style="{StaticResource NumberButtonStyle}"
-					Text="DE"/>
+					Style="{StaticResource OperatorButtonStyle}"
+					Text="Del"/>
 			<Button Grid.Row="4"
 					Grid.Column="3"
 					Style="{StaticResource OperatorButtonStyle}"
-					Text="="/>
+					Text="Enter"/>
 
 		</Grid>
 	</Grid>
