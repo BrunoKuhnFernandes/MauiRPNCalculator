@@ -14,15 +14,15 @@
 		<Style x:Key="BaseCalculatorButtonStyle"
 				TargetType="Button">
 			<Setter Property="WidthRequest"
-					Value="100"/>
+					Value="60"/>
 			<Setter Property="HeightRequest"
-					Value="80"/>
+					Value="50"/>
 			<Setter Property="CornerRadius"
-					Value="20"/>
+					Value="5"/>
 			<Setter Property="TextColor"
 					Value="{AppThemeBinding Light = Black, Dark=White}"/>
 			<Setter Property="FontSize"
-					Value="23"/>
+					Value="10"/>
 			<Setter Property="FontAttributes"
 					Value="Bold"/>
 		</Style>
@@ -172,7 +172,7 @@
 			<Button Grid.Row="4"
 					Grid.Column="1"
 					Style="{StaticResource NumberButtonStyle}"
-					Text="."/>
+					Text=","/>
 			<Button Grid.Row="4"
 					Grid.Column="2"
 					Style="{StaticResource OperatorButtonStyle}"

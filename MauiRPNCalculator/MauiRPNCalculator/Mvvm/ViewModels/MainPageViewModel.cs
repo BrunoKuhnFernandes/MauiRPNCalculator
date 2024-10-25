@@ -29,12 +29,21 @@ public partial class MainPageViewModel : ObservableObject
 	[RelayCommand]
 	public void HandleOperatorButtonPress(string buttonText)
 	{
-		if (buttonText == "DEL")
+		if (buttonText == "Del")
 		{
-			Result = Result.Substring(0, Result.Length - 1);
+			if (!string.IsNullOrWhiteSpace(Result))
+			{
+				Result = Result.Substring(0, Result.Length - 1);
+			}
+			else if (!string.IsNullOrWhiteSpace(Row1))
+			{
+				Row1 = Row2;
+				Row2 = Row3;
+				Row3 = Row4;
+				Row4 = "";
+			}
 		}
 		else if (buttonText == "Enter")
-
 		{
 			if (!string.IsNullOrWhiteSpace(Result))
 			{
@@ -65,20 +74,53 @@ public partial class MainPageViewModel : ObservableObject
 				Row3 = Row4;
 				Row4 = "";
 			}
-
 		}
 		else if (buttonText == "-")
 		{
+            if (!string.IsNullOrWhiteSpace(Result))
+            {
+                Row1 = ($"{decimal.Parse(Row1) - decimal.Parse(Result)}");
+                Result = "";
+            }
+            else if (!string.IsNullOrWhiteSpace(Row1) && !string.IsNullOrWhiteSpace(Row2))
+            {
+                Row1 = ($"{decimal.Parse(Row1) - decimal.Parse(Row2)}");
+                Row2 = Row3;
+                Row3 = Row4;
+                Row4 = "";
+            }
 
-		}
+        }
 		else if (buttonText == "x")
 		{
-
-		}
-		else if (buttonText == "%")
+            if (!string.IsNullOrWhiteSpace(Result))
+            {
+                Row1 = ($"{decimal.Parse(Row1) * decimal.Parse(Result)}");
+                Result = "";
+            }
+            else if (!string.IsNullOrWhiteSpace(Row1) && !string.IsNullOrWhiteSpace(Row2))
+            {
+                Row1 = ($"{decimal.Parse(Row1) * decimal.Parse(Row2)}");
+                Row2 = Row3;
+                Row3 = Row4;
+                Row4 = "";
+            }
+        }
+		else if (buttonText == "÷")
 		{
-
-		}
+            if (!string.IsNullOrWhiteSpace(Result))
+            {
+                Row1 = ($"{decimal.Parse(Row1) / decimal.Parse(Result)}");
+                Result = "";
+            }
+            else if (!string.IsNullOrWhiteSpace(Row1) && !string.IsNullOrWhiteSpace(Row2))
+            {
+                Row1 = ($"{decimal.Parse(Row1) / decimal.Parse(Row2)}");
+                Row2 = Row3;
+                Row3 = Row4;
+                Row4 = "";
+            }
+        }
 		else if (buttonText == "%")
 		{
 
@@ -89,7 +131,11 @@ public partial class MainPageViewModel : ObservableObject
 		}
 		else if(buttonText == "Clear")
 		{
-
-		}
+            Row4 = "";
+            Row3 = "";
+            Row2 = "";
+            Row1 = "";
+            Result = "";
+        }
 	}
 }
