@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using System.Data;
 
-namespace MauiRPNCalculator;
+namespace MauiRPNCalculator.Mvvm.ViewModels;
 
 public partial class MainPageViewModel : ObservableObject
 {

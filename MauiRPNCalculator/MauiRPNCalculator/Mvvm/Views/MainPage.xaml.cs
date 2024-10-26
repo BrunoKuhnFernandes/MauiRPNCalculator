@@ -1,4 +1,6 @@
-﻿namespace MauiRPNCalculator
+﻿using MauiRPNCalculator.Mvvm.ViewModels;
+
+namespace MauiRPNCalculator
 {
 	public partial class MainPage : ContentPage
 	{
@@ -6,7 +8,7 @@
 		public MainPage(MainPageViewModel vm)
 		{
 			InitializeComponent();
-			BindingContext = vm;
+			BindingContext = vm;	
 		}
 	}
 }
