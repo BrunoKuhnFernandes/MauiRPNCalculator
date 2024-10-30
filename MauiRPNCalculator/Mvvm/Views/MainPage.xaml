@@ -79,7 +79,7 @@
 				HorizontalTextAlignment="End"
 				FontSize="20"
 				/>
-				<Entry Text="{Binding Result}"
+				<Entry Text="{Binding TypingField}"
 					HorizontalTextAlignment="End"
 					FontSize="20"
 					/>
