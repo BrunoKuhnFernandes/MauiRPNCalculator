@@ -28,7 +28,7 @@ desktop.ini
 *.cssp
 
 # Local configurations
-#launchSettings.json
+launchSettings.json
 
 # Xamarin/Mobile specific
 .DS_Store

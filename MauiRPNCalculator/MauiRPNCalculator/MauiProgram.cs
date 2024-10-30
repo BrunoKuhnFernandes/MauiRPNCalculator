@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using MauiRPNCalculator.Mvvm.ViewModels;
 
 namespace MauiRPNCalculator
 {
@@ -15,9 +14,6 @@ namespace MauiRPNCalculator
 					fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
 					fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
 				});
-
-			builder.Services.AddTransient<MainPage>();
-			builder.Services.AddTransient<MainPageViewModel>();
 
 #if DEBUG
 			builder.Logging.AddDebug();
