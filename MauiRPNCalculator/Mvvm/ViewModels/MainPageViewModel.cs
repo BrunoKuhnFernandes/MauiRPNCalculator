@@ -97,9 +97,9 @@ public partial class MainPageViewModel : ObservableObject
 
 	private void UpdateRows()
 	{
-		Row1 = _stack.Count > 0 ? _stack.Peek(0).ToString() : "";
-		Row2 = _stack.Count > 1 ? _stack.Peek(1).ToString() : "";
-		Row3 = _stack.Count > 2 ? _stack.Peek(2).ToString() : "";
-		Row4 = _stack.Count > 3 ? _stack.Peek(3).ToString() : "";
+		Row1 = _stack.Count > 0 ? _stack.Peek(0).ToString("F6") : "";
+		Row2 = _stack.Count > 1 ? _stack.Peek(1).ToString("F6") : "";
+		Row3 = _stack.Count > 2 ? _stack.Peek(2).ToString("F6") : "";
+		Row4 = _stack.Count > 3 ? _stack.Peek(3).ToString("F6") : "";
 	}
 }
